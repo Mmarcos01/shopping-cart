@@ -30,7 +30,7 @@ function handleSubmit(event) {
   event.preventDefault();
   // Do all the things ...
   // console.log(event.target);
-  addSelectedItemToCart();
+  addSelectedItemToCart(event);
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
@@ -38,22 +38,33 @@ function handleSubmit(event) {
 }
 
 // TODO: Add the selected item and quantity to the cart
-function addSelectedItemToCart() {
+function addSelectedItemToCart(event) {
   // DONE: suss out the item picked from the select list
   let item = document.getElementById('items').value;
-  console.log(item);
+  // console.log(item);
   // DONE: get the quantity
-  let quantity = document.getElementById('quantity').value;
-  console.log(quantity);
+  let quantity = +document.getElementById('quantity').value;
+  // console.log(quantity);
   // DONE: using those, add one item to the Cart
-  let toCart = document.getElementById('cart').name;
-  cart.addItem(item, quantity);
+  // cart.addItem(item, quantity);
+  // cart.items.push
+  let product = {
+    item,
+    quantity,
+  }
+  cart.items.push(product);
+  
+ 
   
   // Ryan - this isn't done!!!!!!
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  console.log(cart);
+  // **create an array to interate over to display counter in html
+}
+
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
