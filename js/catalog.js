@@ -53,16 +53,16 @@ function addSelectedItemToCart(event) {
     quantity,
   }
   cart.items.push(product);
-  
- 
-  
-  // Ryan - this isn't done!!!!!!
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
-  console.log(cart);
-  // **create an array to interate over to display counter in html
+let count = 0;
+for (let i in cart.items){
+  count += cart.items[i].quantity
+}
+document.getElementById('itemCount').textContent = `: ${count} item(s)`;
+  // document.getElementById('itemCount').textContent = `:  ${cart.items.length} item(s)in cart`;
 }
 
 
