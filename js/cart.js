@@ -9,6 +9,7 @@ var cart;
 function loadCart() {
   var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
+  showCart(cartItems);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -22,7 +23,15 @@ function renderCart() {
 function clearCart() {}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
-function showCart() {
+function showCart(cartItems) {
+
+
+cartItems.map((each) => {
+  let rowElem = document.createElement('tr');
+  rowElem.textContent = `${each.item} ${each.quantity}`;
+  document.getElementById('cart').appendChild(rowElem);
+});
+
 
   // TODO: Find the table body
 
