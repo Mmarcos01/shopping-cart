@@ -41,13 +41,9 @@ function handleSubmit(event) {
 function addSelectedItemToCart(event) {
   // DONE: suss out the item picked from the select list
   let item = document.getElementById('items').value;
-  // console.log(item);
   // DONE: get the quantity
   let quantity = +document.getElementById('quantity').value;
-  // console.log(quantity);
   // DONE: using those, add one item to the Cart
-  // cart.addItem(item, quantity);
-  // cart.items.push
   let product = {
     item,
     quantity,
@@ -62,12 +58,17 @@ for (let i in cart.items){
   count += cart.items[i].quantity
 }
 document.getElementById('itemCount').textContent = `: ${count} item(s)`;
-  // document.getElementById('itemCount').textContent = `:  ${cart.items.length} item(s)in cart`;
 }
 
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+  let item = document.getElementById('items').value;
+  let quantity = +document.getElementById('quantity').value;
+
+  let newElement = document.createElement('p');
+  newElement.textContent = `${item} : ${quantity}`;
+  document.getElementById('cartContents').appendChild(newElement);
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
 }
@@ -77,6 +78,7 @@ function updateCartPreview() {
 // Call that handleSubmit method above and kick off the whole process
 var catalogForm = document.getElementById('catalog');
 catalogForm.addEventListener('submit', handleSubmit);
+
 
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.
